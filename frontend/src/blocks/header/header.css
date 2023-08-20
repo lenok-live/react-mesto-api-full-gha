@@ -1,0 +1,48 @@
+/* позже разнести стили */
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 45px;
+  max-width: 880px;
+  min-height: 74px;
+  margin: 0px auto 35px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
+}
+
+.header__button-link {
+  font-family: 'Inter', 'Arial', Helvetica, sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #FFFFFF;
+  text-decoration: none;
+  transition: 0.8s ease;
+}
+
+.header__button-link:hover {
+  opacity: .6;
+}
+
+.header__email {
+  font-family: 'Inter', 'Arial', Helvetica, sans-serif;
+  line-height: 22px;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  margin-right: 23px;
+}
+  
+@media screen and (max-width: 1000px) {
+  .header {
+    max-width: 700px;
+  }
+}
+@media screen and (max-width: 720px) {
+  .header {
+    max-width: 320px;
+    min-height: 56px;
+    margin: 28px auto 42px;
+    padding-left: 27px;
+  }
+}
