@@ -87,7 +87,7 @@ class Api {
 }
 
 const api = new Api(
-  'https://api.mesto.sultanova.nomoreparties.co'
+  'https://api.mesto.sultanova.nomoredomainsicu.ru'
   //'http://localhost:3000'
   // 'https://mesto.nomoreparties.co/v1/cohort-65',
   // 'd3fb2c0a-8de8-4d21-9acd-d2443a6fba3f'

@@ -19,10 +19,9 @@ const app = express();
 
 //
 const allowedCors = [
-  'http://mesto.sultanova.nomoreparties.co',
   'https://mesto.sultanova.nomoreparties.co',
-  'http://localhost:3000',
-  'http://localhost:3001',
+  'http://mesto.sultanova.nomoreparties.co',
+  'localhost:3000',
 ];
 
 //
