@@ -1,4 +1,5 @@
 const express = require('express');
+
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const helmet = require('helmet');
@@ -18,14 +19,15 @@ const app = express();
 
 //
 const allowedCors = [
-  'localhost:3000',
-  'localhost:3001',
+  'http://mesto.sultanova.nomoreparties.co',
+  'https://mesto.sultanova.nomoreparties.co',
+  'http://localhost:3000',
+  'http://localhost:3001',
 ];
 
 //
 const corsOptions = {
   'Access-Control-Allow-Origin': allowedCors,
-  optionsSuccessStatus: 200,
   credentials: true,
 };
 
@@ -40,6 +42,12 @@ app.use(bodyParser.json()); // преобразует входные данны�
 app.use(bodyParser.urlencoded({ extended: true })); // преобразует запросы, закодированные в URL
 
 app.use(requestLogger); // подключаем логгер запросов до всех обработчиков роутов
+
+app.get('/crash-test', () => {
+  setTimeout(() => {
+    throw new Error('Сервер сейчас упадёт');
+  }, 0);
+});
 
 app.use(routes);
 

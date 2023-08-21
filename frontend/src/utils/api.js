@@ -87,7 +87,8 @@ class Api {
 }
 
 const api = new Api(
-  'http://localhost:3000'
+  'https://api.mesto.sultanova.nomoreparties.co'
+  //'http://localhost:3000'
   // 'https://mesto.nomoreparties.co/v1/cohort-65',
   // 'd3fb2c0a-8de8-4d21-9acd-d2443a6fba3f'
   )
