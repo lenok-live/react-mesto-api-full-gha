@@ -17,26 +17,22 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const app = express();
 
 //
-// const allowedCors = [
-//   'https://praktikum.tk',
-//   'http://praktikum.tk',
-//   'localhost:3000',
-//   'localhost:3001',
-// ];
+const allowedCors = [
+  'localhost:3000',
+  'localhost:3001',
+];
 
 //
-// const corsOptions = {
-//   origin: allowedCors,
-//   optionsSuccessStatus: 200,
-//   credentials: true,
-// };
+const corsOptions = {
+  'Access-Control-Allow-Origin': allowedCors,
+  optionsSuccessStatus: 200,
+  credentials: true,
+};
 
 app.use(helmet());
-
-//
-app.use(cors('no-cors'));
-
 app.use(limiter);
+//
+app.use(cors(corsOptions));
 
 mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
