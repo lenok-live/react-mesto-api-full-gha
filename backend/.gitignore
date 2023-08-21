@@ -14,5 +14,5 @@ node_modules
 .idea
 .vscode
 
-# Evn
+# Env
 .env
