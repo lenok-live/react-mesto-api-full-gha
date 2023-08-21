@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.10.37
+IP 51.250.10.37
 
 Frontend https://mesto.sultanova.nomoreparties.co
 
