@@ -14,18 +14,18 @@ function createCard(req, res, next) {
   const { name, link } = req.body;
   const owner = req.user._id;
 
-  return Card.create({ name, link, owner })
+  Card.create({ name, link, owner })
     .then((card) => { res.status(201).send(card); }) // 1
-    .catch((err) => {
-      if (err.name === 'ValidationError') {
+    .catch((error) => {
+      if (error.name === 'ValidationError') {
         next(new BadRequest('Неподдерживаемый тип данных'));
       } else {
-        next(err);
+        next(error);
       }
     });
 }
 
-function deleteCard(req, res, next) { // 26:26
+function deleteCard(req, res, next) {
   const { cardId } = req.params;
 
   return Card.findById(cardId)
@@ -36,7 +36,7 @@ function deleteCard(req, res, next) { // 26:26
       if (`${card.owner}` !== req.user._id) {
         throw new Forbidden('Доступ к удалению карточки других пользователей запрещен.');
       } else {
-        Card.deleteOne(card)
+        Card.deleteOne()
           .then(() => {
             res.send({ message: 'Карточка была удалена' });
           })
@@ -50,6 +50,12 @@ function deleteCard(req, res, next) { // 26:26
         next(err);
       }
     });
+
+// Card.deleteOne(req.params._id)
+// .then(() => {
+//   res.send({ message: 'Карточка была удалена' });
+// })
+// .catch(next);
 }
 
 function likeCard(req, res, next) {

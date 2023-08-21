@@ -1,14 +1,17 @@
+require('dotenv').config();
+
 const express = require('express');
 
 const mongoose = require('mongoose');
-const bodyParser = require('body-parser');
+
 const helmet = require('helmet');
 const { errors } = require('celebrate');
 //
 const cors = require('cors');
+
 const routes = require('./routes/index');
 
-const { PORT = 3000 } = process.env;
+const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
 
 const limiter = require('./middlewares/rateLimit');
 
@@ -35,10 +38,10 @@ app.use(limiter);
 //
 app.use(cors(corsOptions));
 
-mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
+mongoose.connect(DB_ADDRESS);
 
-app.use(bodyParser.json()); // преобразует входные данные JSON в переменные, доступные JS
-app.use(bodyParser.urlencoded({ extended: true })); // преобразует запросы, закодированные в URL
+app.use(express.json()); // преобразует входные данные JSON в переменные, доступные JS
+app.use(express.urlencoded({ extended: true })); // преобразует запросы, закодированные в URL
 
 app.use(requestLogger); // подключаем логгер запросов до всех обработчиков роутов
 

@@ -1,5 +1,5 @@
 class Api {
-  constructor(address) { // token
+  constructor(address) {
     this.address = address;
    // this.token = token;
   }

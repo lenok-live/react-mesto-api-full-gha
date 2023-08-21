@@ -7,8 +7,8 @@ module.exports = (req, res, next) => {
   const { authorization } = req.headers;
 
   if (!authorization || !authorization.startsWith('Bearer ')) {
-    throw new Unauthorized('Необходима авторизация');
-    // return next(new Unauthorized('Необходима авторизация')); 2
+    next(new Unauthorized('Необходима авторизация'));
+    return;
   }
 
   const token = authorization.replace('Bearer ', '');
@@ -19,7 +19,8 @@ module.exports = (req, res, next) => {
     payload = jwt.verify(token, NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret');
   } catch (err) {
     // отправим ошибку, если не получилось
-    throw new Unauthorized('Необходима авторизация');
+    next(new Unauthorized('Необходима авторизация'));
+    return;
   }
 
   req.user = payload; // записываем пейлоуд в объект запроса
