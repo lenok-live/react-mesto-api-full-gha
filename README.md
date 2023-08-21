@@ -13,4 +13,4 @@ IP-адрес 10.128.0.19
 
 Frontend https://mesto.sultanova.nomoreparties.co
 
-Backend https://api.mesto.sultanova.nomoreparties.co/
+Backend api.mesto.sultanova.nomoredomainsicu.ru
