@@ -1,6 +1,6 @@
-require('dotenv').config();
-
 const express = require('express');
+
+require('dotenv').config();
 
 const mongoose = require('mongoose');
 
@@ -11,7 +11,7 @@ const cors = require('cors');
 
 const routes = require('./routes/index');
 
-const { PORT = 3000, DB_ADDRESS = 'mongodb://127.0.0.1:27017/mestodb' } = process.env;
+const { PORT = 3000 } = process.env;
 
 const limiter = require('./middlewares/rateLimit');
 
@@ -38,7 +38,7 @@ app.use(limiter);
 //
 app.use(cors(corsOptions));
 
-mongoose.connect(DB_ADDRESS);
+mongoose.connect('mongodb://127.0.0.1:27017/mestodb');
 
 app.use(express.json()); // преобразует входные данные JSON в переменные, доступные JS
 app.use(express.urlencoded({ extended: true })); // преобразует запросы, закодированные в URL

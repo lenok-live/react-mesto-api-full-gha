@@ -10,7 +10,7 @@ function checkRes(res) {
     return Promise.reject(res.status)
 };
 
-export const register = ({email, password}) => { // ({email, password}) y
+export const register = ({email, password}) => { 
   return fetch(`${BASE_URL}/signup`, {
     method: 'POST',
     headers: {
@@ -22,7 +22,7 @@ export const register = ({email, password}) => { // ({email, password}) y
   .then(checkRes)
 };
 
-export const authorize = ({email, password}) => { // ({email, password}) y
+export const authorize = ({email, password}) => { 
   return fetch(`${BASE_URL}/signin`, {
     method: 'POST',
     headers: {
